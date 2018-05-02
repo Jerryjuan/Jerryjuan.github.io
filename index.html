@@ -321,7 +321,7 @@
     }
 }  
 </code></pre>
-<h3 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h3><p>用上面的代码求a^n的时间复杂度为O(n)，其实这个时间复杂度一般情况下还可以，但是如果遇到很大的n，那么最后求出的数据的值很大，计算量会暴涨。<br>快速幂运用了结合律的思想而且使用了位运算极大的节省了时间，一般情况下，位运算是比其他的运算快很多的，因为其他运算在计算机中都是转换为位运算来计算的。直接使用位运算也可以为我们节省很多的时间。<br>下面我们来看下快速幂的原理：<br>a^8=a<em> a</em> a<em> a</em> a <em>a 共计算了7次<br>a^8=(a </em>a <em>a </em>a)(a <em>a </em> a <em>a)=(a </em>a <em>a </em>a)^2共计算了4次<br>同理，继续进行结合a^8=((a *a)^2)^2计算了3次<br>如此重复，之前需要7次的计算现在只需要3次，时间复杂度降为o(logn),这样算来，如果指数为1e10，大约只要算34次。很大程度的减少了次数。<br>下面是快速幂的代码:  </p>
+<h3 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h3><p>用上面的代码求a^n的时间复杂度为O(n)，其实这个时间复杂度一般情况下还可以，但是如果遇到很大的n，那么最后求出的数据的值很大，计算量会暴涨。<br>快速幂运用了结合律的思想而且使用了位运算极大的节省了时间，一般情况下，位运算是比其他的运算快很多的，因为其他运算在计算机中都是转换为位运算来计算的。直接使用位运算也可以为我们节省很多的时间。<br>下面我们来看下快速幂的原理：<br>a^8=a <em> a </em> a <em> a </em> a <em> a 共计算了7次<br>a^8=(a </em> a <em> a </em> a)(a <em> a </em> a <em> a)=(a </em> a <em> a </em> a)^2共计算了4次<br>同理，继续进行结合a^8=((a * a)^2)^2计算了3次<br>如此重复，之前需要7次的计算现在只需要3次，时间复杂度降为o(logn),这样算来，如果指数为1e10，大约只要算34次。很大程度的减少了次数。<br>下面是快速幂的代码:  </p>
 <pre><code class="c++"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;
 <span class="function">LL <span class="title">Qpow</span><span class="params">(LL a,LL n)</span></span>{
     <span class="keyword">if</span>(n==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;
