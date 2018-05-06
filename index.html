@@ -309,8 +309,7 @@
 
       
         
-          
-            <h3 id="求a-n的值"><a href="#求a-n的值" class="headerlink" title="求a^n的值"></a>求a^n的值</h3><pre><code class="c++"><span class="comment">//最容易想到的求a^n的代码  </span>
+          <h3 id="求a-n的值"><a href="#求a-n的值" class="headerlink" title="求a^n的值"></a>求a^n的值</h3><pre><code class="c++"><span class="comment">//最容易想到的求a^n的代码  </span>
 <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;
 <span class="function">LL <span class="title">powr</span><span class="params">(LL a,LL n)</span></span>{
     <span class="keyword">if</span>(n==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;
@@ -321,39 +320,14 @@
     }
 }  
 </code></pre>
-<h3 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h3><p>用上面的代码求a^n的时间复杂度为O(n)，其实这个时间复杂度一般情况下还可以，但是如果遇到很大的n，那么最后求出的数据的值很大，计算量会暴涨。<br>快速幂运用了结合律的思想而且使用了位运算极大的节省了时间，一般情况下，位运算是比其他的运算快很多的，因为其他运算在计算机中都是转换为位运算来计算的。直接使用位运算也可以为我们节省很多的时间。<br>下面我们来看下快速幂的原理：<br>a^8=a <em> a </em> a <em> a </em> a <em> a 共计算了7次<br>a^8=(a </em> a <em> a </em> a)(a <em> a </em> a <em> a)=(a </em> a <em> a </em> a)^2共计算了4次<br>同理，继续进行结合a^8=((a * a)^2)^2计算了3次<br>如此重复，之前需要7次的计算现在只需要3次，时间复杂度降为o(logn),这样算来，如果指数为1e10，大约只要算34次。很大程度的减少了次数。<br>下面是快速幂的代码:  </p>
-<pre><code class="c++"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;
-<span class="function">LL <span class="title">Qpow</span><span class="params">(LL a,LL n)</span></span>{
-    <span class="keyword">if</span>(n==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;
-    LL ans=<span class="number">1</span>;
-    <span class="keyword">while</span>(n){
-        <span class="keyword">if</span>(n&amp;<span class="number">1</span>){<span class="comment">//n为奇数 </span>
-            ans=ans*a;    
-        }
-        a*=a;
-        n&gt;&gt;=<span class="number">1</span>;<span class="comment">//右移位，等价于除2 </span>
-    }
-    <span class="keyword">return</span> ans; 
-} 
-</code></pre>
-<h4 id="快速幂取模"><a href="#快速幂取模" class="headerlink" title="快速幂取模"></a>快速幂取模</h4><pre><code class="c++"><span class="comment">//快速幂取模  </span>
-<span class="comment">/*</span>
-<span class="comment">根据模运算的公式：(m*n)%c=(m%c)(n%c)%c</span>
-<span class="comment">*/</span>
-<span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;
-<span class="function">ll <span class="title">quick</span><span class="params">(ll a,ll b,ll  c)</span></span>{
-    ll ans=<span class="number">1</span>;
-    a=a%c;
-    <span class="keyword">while</span>(b!=<span class="number">0</span>){
-        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)ans=(ans*a)%c;
-        b&gt;&gt;=<span class="number">1</span>;
-        a=(a*a)%c;
-    }
-    <span class="keyword">return</span> ans;
-}  
-</code></pre>
-
-          
+<h3 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h3><p>用上面的代码求a^n的时间复杂度为O(n)，其实这个时间复杂度一般情况下还可以，但是如果遇到很大的n，那么最后求出的数据的值很大，计算量会暴涨。<br>快速幂运用了结合律的思想而且使用了位运算极大的节省了时间，一般情况下，位运算是比其他的运算快很多的，因为其他运算在计算机中都是转换为位运算来计算的。直接使用位运算也可以为我们节省很多的时间。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/02/快速幂/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -714,11 +688,14 @@
 
       
         
-          
-            <p>打开WinEdt 10，在上方找到Options——&gt;Execution Modes - MiKTeX ——&gt;选择PDF Viewer</p>
-<p>将第一个的地址改为SumatraPDF的地址，单击apply，然后单击ok。</p>
-
-          
+          <p>打开WinEdt 10，在上方找到Options——&gt;Execution Modes - MiKTeX ——&gt;选择PDF Viewer<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/14/怎样将WinEdt-10与SumatraPDF互联/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -835,18 +812,14 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/11/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
