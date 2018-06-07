@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/c-知识2——流类库与输入输出/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/C++知识3——函数模板与类模板/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -258,7 +258,130 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/06/c-知识2——流类库与输入输出/" itemprop="url">C++知识2——流类库与输入输出</a></h1>
+                <a class="post-title-link" href="/2018/06/07/C++知识3——函数模板与类模板/" itemprop="url">C++知识3——函数模板与类模板</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-07T20:15:32+08:00">
+                2018-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="函数模板与类模板"><a href="#函数模板与类模板" class="headerlink" title="函数模板与类模板"></a>函数模板与类模板</h3><h4 id="函数模板"><a href="#函数模板" class="headerlink" title="函数模板"></a>函数模板</h4><p>模板实质上就是重载<br>函数模板的定义形式：<br>template&lt;模板参数表&gt;<br>类型名 函数名 (参数表)<br>{<br>    函数体的定义<br>}<br>例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">abs</span><span class="params">(T a)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a&lt;<span class="number">0</span>?-a:a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n=<span class="number">-5</span>;</span><br><span class="line">	<span class="keyword">double</span> d=<span class="number">-5.5</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">abs</span>(n)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">abs</span>(d)&lt;&lt;<span class="built_in">endl</span>; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>模板参数表：由逗号分隔的模板参数构成，可以包括以下内容<br>1：class(或typename)标识符，指明可以接收一个类型参数。这些类型参数代表的是类型，可以是内部类型或者自定义类型<br>2：”类型说明符”标识符，指明可以接收一个由”类型说明符”所规定类型的常量作为参数。<br>3：template&lt;参数表&gt;class标识符，指明可以接收一个类模板名作为参数<br>当类型函数的含义确定后，编译器将以函数模板为样板，生成一个函数，这一过程称为函数模板的实例化。<br>函数模板与函数的区别 ：<br>1：函数模板本身在编译的时候不会产生任何目标代码，只有由模板生成的实例会产生目标代码<br>2：被多个源文件引用的函数模板，应当连同函数体一同放在头文件中，而不能像普通函数那样只将声明放在头文件中。<br>3：函数指针也只能指向模板的实例，而不能指向模板本身。  </p>
+<h4 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a>类模板</h4><p>使用类模板使用户可以为类定义一种模式，使得类中的某些数据成员、某些成员函数的参数、返回值或局部变量能取任意值。<br>类模板声明的语法：<br>template&lt;模板参数表&gt;<br>class 类名<br>{<br> 类成员声明<br>}<br>如果需要在类模板以外定义其成员函数，则要采用以下形式(每一个函数的类外实现都要写template&lt;模板参数表&gt;)：<br>template&lt;模板参数表&gt;<br>类型名 类名&lt;模板参数标识符列表&gt;::函数名(参数表)<br>使用一个模板类建立对象时，声明方式：<br>模板名&lt;模板参数表&gt;对象1,对象2,……,对象n;  </p>
+<h4 id="题目整理"><a href="#题目整理" class="headerlink" title="题目整理"></a>题目整理</h4><p>1：类模板的使用实际上是将类模板实例化成一个类<br>2：类模板的模板参数：<br>能作为数据成员的类型<br>可作为成员函数的返回类型<br>可作为成员函数的参数类型<br>3：类模板的实例化是在编译时进行。  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/C++知识2——流类库与输入输出/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerryjuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/06/C++知识2——流类库与输入输出/" itemprop="url">C++知识2——流类库与输入输出</a></h1>
         
 
         <div class="post-meta">
@@ -313,7 +436,7 @@
 <h4 id="No-2-输出流-ostream"><a href="#No-2-输出流-ostream" class="headerlink" title="No.2 输出流 ostream"></a>No.2 输出流 ostream</h4><p>预先定义的ostream类对象用来完成向标准设备的输出：<br>cout是标准输出流<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/06/06/c-知识2——流类库与输入输出/#more" rel="contents">
+            <a class="btn" href="/2018/06/06/C++知识2——流类库与输入输出/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -682,128 +805,6 @@
             <h3 id="RMQ算法用途"><a href="#RMQ算法用途" class="headerlink" title="RMQ算法用途"></a>RMQ算法用途</h3><p>RMQ算法：对于任意给定的一个数列a,求RMQ(a,i,j)就是求a数列中[i,j]中的最大值和最小值。  </p>
 <h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>RMQ算法是快速求区间最值得离线算法，预处理的复杂度为O(n*logn),查询O(1)[用线段树也可以做，RMQ算法主要用到了DP的思想]  </p>
 <h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><p>DP+位运算  </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/08/LaTeX的基本语法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jerryjuan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/08/LaTeX的基本语法/" itemprop="url">LaTeX的基本语法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-08T23:16:22+08:00">
-                2018-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="LaTeX"><a href="#LaTeX" class="headerlink" title="LaTeX"></a>LaTeX</h3><p>最近在用LaTeX码东西，过来整理一下这个过程中学到的东西。  </p>
-<h4 id="对字体"><a href="#对字体" class="headerlink" title="对字体"></a>对字体</h4><p>加粗：\textbf{}<br>斜体: \emph{}<br>开始都要有\documentclass{article}<br>\begin{document}</p>
-<p>\end{document}  </p>
 
           
         
@@ -1529,7 +1530,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

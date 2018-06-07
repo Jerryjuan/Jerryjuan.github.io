@@ -83,11 +83,11 @@
 <meta name="keywords" content="c++复习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++知识2——流类库与输入输出">
-<meta property="og:url" content="http://yoursite.com/2018/06/06/c-知识2——流类库与输入输出/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/06/06/C++知识2——流类库与输入输出/index.html">
 <meta property="og:site_name" content="Jerryjuan">
 <meta property="og:description" content="一：I/O流的概念及流类库结构No.1 一些概念流是一种抽象，它负责在数据的生产者和数据的消费者之间建立联系，并管理数据的流动。程序将流对象看做文件对象的化身一般意义下的读操作在流数据抽象中被称为（从流中）提取，写操作被称为（向流中）插入本章中把别名所表示的模板实例称作类     No.2 输出流 ostream预先定义的ostream类对象用来完成向标准设备的输出：cout是标准输出流">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-07T12:13:25.740Z">
+<meta property="og:updated_time" content="2018-06-07T12:35:37.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++知识2——流类库与输入输出">
 <meta name="twitter:description" content="一：I/O流的概念及流类库结构No.1 一些概念流是一种抽象，它负责在数据的生产者和数据的消费者之间建立联系，并管理数据的流动。程序将流对象看做文件对象的化身一般意义下的读操作在流数据抽象中被称为（从流中）提取，写操作被称为（向流中）插入本章中把别名所表示的模板实例称作类     No.2 输出流 ostream预先定义的ostream类对象用来完成向标准设备的输出：cout是标准输出流">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/06/c-知识2——流类库与输入输出/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/06/C++知识2——流类库与输入输出/"/>
 
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/c-知识2——流类库与输入输出/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/C++知识2——流类库与输入输出/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -322,6 +322,7 @@
 <h4 id="No-3-put函数"><a href="#No-3-put函数" class="headerlink" title="No.3 put函数"></a>No.3 put函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span>.put(<span class="string">'A'</span>);<span class="comment">//精确地输出一个字符</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">'A'</span>;<span class="comment">/*输出一个字符，但此前设置的宽度和填充方式在此起作用*/</span></span><br></pre></td></tr></table></figure>
 <h4 id="No-4-write函数"><a href="#No-4-write函数" class="headerlink" title="No.4 write函数"></a>No.4 write函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file.write((<span class="keyword">char</span> * )(&amp;c),<span class="keyword">sizeof</span>(c));</span><br><span class="line"><span class="comment">//file.write(地址,sizeof())字节数</span></span><br></pre></td></tr></table></figure>
 <h4 id="No-5-错误处理函数"><a href="#No-5-错误处理函数" class="headerlink" title="No.5 错误处理函数"></a>No.5 错误处理函数</h4><p>fail的功能及返回值：<br>如果出现一个不可恢复的错误或一个预期的条件，例如一个转换错误或文件未找到，则返回一个非0值。在用零参数调用clear之后，错误标记被清除。  </p>
+<h3 id="三：题目整理"><a href="#三：题目整理" class="headerlink" title="三：题目整理"></a>三：题目整理</h3><p>1:要进行文件的输出，除了包含头文件iostream外，还要包含<strong>fstream</strong><br>2: <strong>important:</strong><br>定义char <em>p=”abcd”;能输出p的值(“abcd”的地址)的为：cout&lt;&lt;(void </em>)p;<br><em>解析：</em><br>在C语言里，输出一个字符串的指针很方便，直接printf(“%p/n”,p);就输出了。<br>而在c++里的cout在输出字符串地址的时候，自动输出对应的字符串了，所以转换为void *类型，因为void类型的cout不知道怎么输出了，最后只能输出”abcd”的地址了<br>分析：如果是&amp;p输出的是地址的地址并不是所要的”abcd”的地址  </p>
 
       
     </div>
@@ -361,6 +362,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/07/C++知识3——函数模板与类模板/" rel="prev" title="C++知识3——函数模板与类模板">
+                C++知识3——函数模板与类模板 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -450,7 +455,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -483,7 +488,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一：I-O流的概念及流类库结构"><span class="nav-number">1.</span> <span class="nav-text">一：I/O流的概念及流类库结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#No-1-一些概念"><span class="nav-number">1.1.</span> <span class="nav-text">No.1 一些概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-2-输出流-ostream"><span class="nav-number">1.2.</span> <span class="nav-text">No.2 输出流 ostream</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-3-输出流-ofstream"><span class="nav-number">1.3.</span> <span class="nav-text">No.3 输出流 ofstream</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二：插入运算符和操纵符"><span class="nav-number">2.</span> <span class="nav-text">二：插入运算符和操纵符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#No-1-一些基本函数的应用"><span class="nav-number">2.1.</span> <span class="nav-text">No.1 一些基本函数的应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-2-文件输出流成员函数"><span class="nav-number">2.2.</span> <span class="nav-text">No.2 文件输出流成员函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-3-put函数"><span class="nav-number">2.3.</span> <span class="nav-text">No.3 put函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-4-write函数"><span class="nav-number">2.4.</span> <span class="nav-text">No.4 write函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-5-错误处理函数"><span class="nav-number">2.5.</span> <span class="nav-text">No.5 错误处理函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一：I-O流的概念及流类库结构"><span class="nav-number">1.</span> <span class="nav-text">一：I/O流的概念及流类库结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#No-1-一些概念"><span class="nav-number">1.1.</span> <span class="nav-text">No.1 一些概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-2-输出流-ostream"><span class="nav-number">1.2.</span> <span class="nav-text">No.2 输出流 ostream</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-3-输出流-ofstream"><span class="nav-number">1.3.</span> <span class="nav-text">No.3 输出流 ofstream</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二：插入运算符和操纵符"><span class="nav-number">2.</span> <span class="nav-text">二：插入运算符和操纵符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#No-1-一些基本函数的应用"><span class="nav-number">2.1.</span> <span class="nav-text">No.1 一些基本函数的应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-2-文件输出流成员函数"><span class="nav-number">2.2.</span> <span class="nav-text">No.2 文件输出流成员函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-3-put函数"><span class="nav-number">2.3.</span> <span class="nav-text">No.3 put函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-4-write函数"><span class="nav-number">2.4.</span> <span class="nav-text">No.4 write函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#No-5-错误处理函数"><span class="nav-number">2.5.</span> <span class="nav-text">No.5 错误处理函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三：题目整理"><span class="nav-number">3.</span> <span class="nav-text">三：题目整理</span></a></li></ol></div>
             
 
           </div>

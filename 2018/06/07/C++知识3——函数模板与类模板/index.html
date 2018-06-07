@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LaTeX," />
+  <meta name="keywords" content="C++复习," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="LaTeX最近在用LaTeX码东西，过来整理一下这个过程中学到的东西。   对字体加粗：\textbf{}斜体: \emph{}开始都要有\documentclass{article}\begin{document} \end{document}">
-<meta name="keywords" content="LaTeX">
+<meta name="description" content="函数模板与类模板函数模板模板实质上就是重载函数模板的定义形式：template&amp;lt;模板参数表&amp;gt;类型名 函数名 (参数表){    函数体的定义}例如：12345678910111213#include&amp;lt;iostream&amp;gt;using namespace std;template&amp;lt;typename T&amp;gt;T abs(T a)&amp;#123;	return a&amp;lt;0?-a">
+<meta name="keywords" content="C++复习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LaTeX的基本语法">
-<meta property="og:url" content="http://yoursite.com/2018/05/08/LaTeX的基本语法/index.html">
+<meta property="og:title" content="C++知识3——函数模板与类模板">
+<meta property="og:url" content="http://yoursite.com/2018/06/07/C++知识3——函数模板与类模板/index.html">
 <meta property="og:site_name" content="Jerryjuan">
-<meta property="og:description" content="LaTeX最近在用LaTeX码东西，过来整理一下这个过程中学到的东西。   对字体加粗：\textbf{}斜体: \emph{}开始都要有\documentclass{article}\begin{document} \end{document}">
+<meta property="og:description" content="函数模板与类模板函数模板模板实质上就是重载函数模板的定义形式：template&amp;lt;模板参数表&amp;gt;类型名 函数名 (参数表){    函数体的定义}例如：12345678910111213#include&amp;lt;iostream&amp;gt;using namespace std;template&amp;lt;typename T&amp;gt;T abs(T a)&amp;#123;	return a&amp;lt;0?-a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-08T15:32:53.358Z">
+<meta property="og:updated_time" content="2018-06-07T13:18:04.945Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LaTeX的基本语法">
-<meta name="twitter:description" content="LaTeX最近在用LaTeX码东西，过来整理一下这个过程中学到的东西。   对字体加粗：\textbf{}斜体: \emph{}开始都要有\documentclass{article}\begin{document} \end{document}">
+<meta name="twitter:title" content="C++知识3——函数模板与类模板">
+<meta name="twitter:description" content="函数模板与类模板函数模板模板实质上就是重载函数模板的定义形式：template&amp;lt;模板参数表&amp;gt;类型名 函数名 (参数表){    函数体的定义}例如：12345678910111213#include&amp;lt;iostream&amp;gt;using namespace std;template&amp;lt;typename T&amp;gt;T abs(T a)&amp;#123;	return a&amp;lt;0?-a">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/08/LaTeX的基本语法/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/07/C++知识3——函数模板与类模板/"/>
 
 
 
 
 
-  <title>LaTeX的基本语法 | Jerryjuan</title>
+  <title>C++知识3——函数模板与类模板 | Jerryjuan</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/08/LaTeX的基本语法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/C++知识3——函数模板与类模板/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LaTeX的基本语法</h1>
+          <h1 class="post-title" itemprop="name headline">C++知识3——函数模板与类模板</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-08T23:16:22+08:00">
-                2018-05-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-07T20:15:32+08:00">
+                2018-06-07
               </time>
             
 
@@ -310,9 +310,10 @@
       
 
       
-        <h3 id="LaTeX"><a href="#LaTeX" class="headerlink" title="LaTeX"></a>LaTeX</h3><p>最近在用LaTeX码东西，过来整理一下这个过程中学到的东西。  </p>
-<h4 id="对字体"><a href="#对字体" class="headerlink" title="对字体"></a>对字体</h4><p>加粗：\textbf{}<br>斜体: \emph{}<br>开始都要有\documentclass{article}<br>\begin{document}</p>
-<p>\end{document}  </p>
+        <h3 id="函数模板与类模板"><a href="#函数模板与类模板" class="headerlink" title="函数模板与类模板"></a>函数模板与类模板</h3><h4 id="函数模板"><a href="#函数模板" class="headerlink" title="函数模板"></a>函数模板</h4><p>模板实质上就是重载<br>函数模板的定义形式：<br>template&lt;模板参数表&gt;<br>类型名 函数名 (参数表)<br>{<br>    函数体的定义<br>}<br>例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">abs</span><span class="params">(T a)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a&lt;<span class="number">0</span>?-a:a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n=<span class="number">-5</span>;</span><br><span class="line">	<span class="keyword">double</span> d=<span class="number">-5.5</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">abs</span>(n)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">abs</span>(d)&lt;&lt;<span class="built_in">endl</span>; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>模板参数表：由逗号分隔的模板参数构成，可以包括以下内容<br>1：class(或typename)标识符，指明可以接收一个类型参数。这些类型参数代表的是类型，可以是内部类型或者自定义类型<br>2：”类型说明符”标识符，指明可以接收一个由”类型说明符”所规定类型的常量作为参数。<br>3：template&lt;参数表&gt;class标识符，指明可以接收一个类模板名作为参数<br>当类型函数的含义确定后，编译器将以函数模板为样板，生成一个函数，这一过程称为函数模板的实例化。<br>函数模板与函数的区别 ：<br>1：函数模板本身在编译的时候不会产生任何目标代码，只有由模板生成的实例会产生目标代码<br>2：被多个源文件引用的函数模板，应当连同函数体一同放在头文件中，而不能像普通函数那样只将声明放在头文件中。<br>3：函数指针也只能指向模板的实例，而不能指向模板本身。  </p>
+<h4 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a>类模板</h4><p>使用类模板使用户可以为类定义一种模式，使得类中的某些数据成员、某些成员函数的参数、返回值或局部变量能取任意值。<br>类模板声明的语法：<br>template&lt;模板参数表&gt;<br>class 类名<br>{<br> 类成员声明<br>}<br>如果需要在类模板以外定义其成员函数，则要采用以下形式(每一个函数的类外实现都要写template&lt;模板参数表&gt;)：<br>template&lt;模板参数表&gt;<br>类型名 类名&lt;模板参数标识符列表&gt;::函数名(参数表)<br>使用一个模板类建立对象时，声明方式：<br>模板名&lt;模板参数表&gt;对象1,对象2,……,对象n;  </p>
+<h4 id="题目整理"><a href="#题目整理" class="headerlink" title="题目整理"></a>题目整理</h4><p>1：类模板的使用实际上是将类模板实例化成一个类<br>2：类模板的模板参数：<br>能作为数据成员的类型<br>可作为成员函数的返回类型<br>可作为成员函数的参数类型<br>3：类模板的实例化是在编译时进行。  </p>
 
       
     </div>
@@ -330,7 +331,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LaTeX/" rel="tag"># LaTeX</a>
+            <a href="/tags/C-复习/" rel="tag"># C++复习</a>
           
         </div>
       
@@ -343,8 +344,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/07/NEUQ-HBCPC选拔赛题解/" rel="next" title="NEUQ-HBCPC选拔赛题解">
-                <i class="fa fa-chevron-left"></i> NEUQ-HBCPC选拔赛题解
+              <a href="/2018/06/06/C++知识2——流类库与输入输出/" rel="next" title="C++知识2——流类库与输入输出">
+                <i class="fa fa-chevron-left"></i> C++知识2——流类库与输入输出
               </a>
             
           </div>
@@ -352,10 +353,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/11/RMQ算法/" rel="prev" title="RMQ算法">
-                RMQ算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -445,7 +442,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -478,7 +475,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LaTeX"><span class="nav-number">1.</span> <span class="nav-text">LaTeX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对字体"><span class="nav-number">1.1.</span> <span class="nav-text">对字体</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数模板与类模板"><span class="nav-number">1.</span> <span class="nav-text">函数模板与类模板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数模板"><span class="nav-number">1.1.</span> <span class="nav-text">函数模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类模板"><span class="nav-number">1.2.</span> <span class="nav-text">类模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题目整理"><span class="nav-number">1.3.</span> <span class="nav-text">题目整理</span></a></li></ol></li></ol></div>
             
 
           </div>
