@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/04/C++知识1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/c-知识2——流类库与输入输出/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -258,7 +258,138 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/04/C++知识1/" itemprop="url">C++知识一</a></h1>
+                <a class="post-title-link" href="/2018/06/06/c-知识2——流类库与输入输出/" itemprop="url">C++知识2——流类库与输入输出</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T21:18:47+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一：I-O流的概念及流类库结构"><a href="#一：I-O流的概念及流类库结构" class="headerlink" title="一：I/O流的概念及流类库结构"></a>一：I/O流的概念及流类库结构</h3><h4 id="No-1-一些概念"><a href="#No-1-一些概念" class="headerlink" title="No.1 一些概念"></a>No.1 一些概念</h4><p>流是一种抽象，它负责在数据的生产者和数据的消费者之间建立联系，并管理数据的流动。<br>程序将流对象看做文件对象的化身<br>一般意义下的读操作在流数据抽象中被称为（从流中）<strong>提取</strong>，写操作被称为（向流中）<strong>插入</strong><br>本章中把别名所表示的模板实例称作类    </p>
+<h4 id="No-2-输出流-ostream"><a href="#No-2-输出流-ostream" class="headerlink" title="No.2 输出流 ostream"></a>No.2 输出流 ostream</h4><p>预先定义的ostream类对象用来完成向标准设备的输出：<br>cout是标准输出流<br>cerr是标准错误输出流，没有缓冲，发送给他的内容立即输出<br>clog类似于cerr，但是有缓冲，缓冲区满时输出  </p>
+<h4 id="No-3-输出流-ofstream"><a href="#No-3-输出流-ofstream" class="headerlink" title="No.3 输出流 ofstream"></a>No.3 输出流 ofstream</h4><p>ofstream支持磁盘文件输出。如果需要一个只输出的磁盘文件，可以构造一个ofstream类的对象。  </p>
+<h3 id="二：插入运算符和操纵符"><a href="#二：插入运算符和操纵符" class="headerlink" title="二：插入运算符和操纵符"></a>二：插入运算符和操纵符</h3><h4 id="No-1-一些基本函数的应用"><a href="#No-1-一些基本函数的应用" class="headerlink" title="No.1 一些基本函数的应用"></a>No.1 一些基本函数的应用</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*控制宽度之 cout.width(),</span></span><br><span class="line"><span class="comment">当有cout.width(10)时候，即设置域宽时，默认为右对齐.</span></span><br><span class="line"><span class="comment">需要iomanip头文件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span>  rec[<span class="number">3</span>]=&#123; <span class="number">1.22</span> , <span class="number">3.4345</span> , <span class="number">8.23456</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ; i&lt;<span class="number">3</span> ; i++)&#123;</span><br><span class="line">		<span class="built_in">cout</span>.width(<span class="number">10</span>);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;rec[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">左对齐:由程序的运行结果可以得出，开左对齐后，</span></span><br><span class="line"><span class="comment">如果不人为关闭左对齐，左对齐是一直有效的.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">设置域宽的操作必须在使用的时候调用一次，调用之后如果下次不</span></span><br><span class="line"><span class="comment">加上这句话是运行后是不会设置域宽的 </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">需要iomanip头文件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span>  rec[<span class="number">3</span>]=&#123; <span class="number">1.22</span> , <span class="number">3.4345</span> , <span class="number">8.23456</span>&#125;;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;setiosflags(ios_base::left);<span class="comment">//设置左对齐 </span></span><br><span class="line">	<span class="comment">//cout&lt;&lt;setiosflags(ios::left);//也可以设置左对齐 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ; i&lt;<span class="number">3</span> ; i++)&#123;</span><br><span class="line">		<span class="built_in">cout</span>.width(<span class="number">10</span>);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;rec[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;resetiosflags(ios_base::left);<span class="comment">//取消左对齐 </span></span><br><span class="line">	<span class="comment">//cout&lt;&lt;resetiosflags(ios::left);取消左对齐 </span></span><br><span class="line">	<span class="built_in">cout</span>.width(<span class="number">10</span>);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;rec[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">在开头设置之后一直可以有效 </span></span><br><span class="line"><span class="comment">setfill('想要填充的字符')需要iomanip头文件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span>  rec[<span class="number">3</span>]=&#123; <span class="number">1.22</span> , <span class="number">3.4345</span> , <span class="number">8.23456</span>&#125;;</span><br><span class="line"> 	<span class="built_in">cout</span>&lt;&lt;setfill(<span class="string">'@'</span>);<span class="comment">//填充 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ; i&lt;<span class="number">3</span> ; i++)&#123;</span><br><span class="line">		<span class="built_in">cout</span>.width(<span class="number">10</span>);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;rec[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>.width(<span class="number">10</span>);	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;rec[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span>  rec[<span class="number">3</span>]=&#123; <span class="number">1.22</span> , <span class="number">3.4345</span> , <span class="number">8.23456</span>&#125;; </span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;setiosflags(ios_base::fixed);<span class="comment">/*不使用科学计数法 */</span></span><br><span class="line">	<span class="comment">//cout&lt;&lt;setiosflags(ios_base::scientific);/*使用科学计数法,一位有效数字的浮点数*/</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	两个代码也是设置一次之后，如果不人为改变都是会一直符合的，具有持久性</span></span><br><span class="line"><span class="comment">	因为没有设置有效位数，所以精度值确定了总的有效位数 </span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ; i&lt;<span class="number">3</span> ; i++)&#123;</span><br><span class="line">		<span class="built_in">cout</span>.width(<span class="number">10</span>);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;rec[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>.width(<span class="number">10</span>);	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;rec[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写一次代码，但是具有持久性的：<br>左对齐setiosflags(ios_base::left)<br>填充setfill(‘@’)<br>cout&lt;&lt;setiosflags(ios_base::scientific)<br>cout&lt;&lt;setiosflags(ios_base::fixed)  </p>
+<h4 id="No-2-文件输出流成员函数"><a href="#No-2-文件输出流成员函数" class="headerlink" title="No.2 文件输出流成员函数"></a>No.2 文件输出流成员函数</h4><p><strong>ios_base::out与ios_base::binary的相同点：</strong><br>如果硬盘上有所命名的文件，会把此文件删掉，重建新文件<br><strong>ios_base::app:</strong><br>用于在文件尾部追加数据，不会再开一个新的文件存储   </p>
+<h4 id="No-3-put函数"><a href="#No-3-put函数" class="headerlink" title="No.3 put函数"></a>No.3 put函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span>.put(<span class="string">'A'</span>);<span class="comment">//精确地输出一个字符</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">'A'</span>;<span class="comment">/*输出一个字符，但此前设置的宽度和填充方式在此起作用*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="No-4-write函数"><a href="#No-4-write函数" class="headerlink" title="No.4 write函数"></a>No.4 write函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file.write((<span class="keyword">char</span> * )(&amp;c),<span class="keyword">sizeof</span>(c));</span><br><span class="line"><span class="comment">//file.write(地址,sizeof())字节数</span></span><br></pre></td></tr></table></figure>
+<h4 id="No-5-错误处理函数"><a href="#No-5-错误处理函数" class="headerlink" title="No.5 错误处理函数"></a>No.5 错误处理函数</h4><p>fail的功能及返回值：<br>如果出现一个不可恢复的错误或一个预期的条件，例如一个转换错误或文件未找到，则返回一个非0值。在用零参数调用clear之后，错误标记被清除。  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/04/C++知识1——c++简单程序设计/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerryjuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/04/C++知识1——c++简单程序设计/" itemprop="url">C++知识1——c++简单程序设计</a></h1>
         
 
         <div class="post-meta">
@@ -312,7 +443,7 @@
           <h4 id="N0-1-一些基本的内容"><a href="#N0-1-一些基本的内容" class="headerlink" title="N0.1 一些基本的内容"></a>N0.1 一些基本的内容</h4><p>(1)：怎样算一个语句：<br>程序由语句组成，每条语句由分号(;)作为结束符。<br>例题：<br>{;}是一条语句<br>a=0,b=0,c=0;是一条语句  </p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/06/04/C++知识1/#more" rel="contents">
+            <a class="btn" href="/2018/06/04/C++知识1——c++简单程序设计/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1341,133 +1472,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/11/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jerryjuan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/11/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T21:50:29+08:00">
-                2018-04-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/11/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1511,7 +1522,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
