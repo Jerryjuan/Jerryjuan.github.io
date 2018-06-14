@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Jerryjuan">
 <meta property="og:description" content="我努力奔跑证明我还活着。     函数一些简单的声明函数的语法就不在这里赘述了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-14T12:26:16.538Z">
+<meta property="og:updated_time" content="2018-06-14T13:00:14.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++知识点6——函数">
 <meta name="twitter:description" content="我努力奔跑证明我还活着。     函数一些简单的声明函数的语法就不在这里赘述了。">
@@ -312,8 +312,32 @@
       
         <p><em>我努力奔跑证明我还活着。</em>   </p>
 <hr>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>一些简单的声明函数的语法就不在这里赘述了。<br><a id="more"></a></p>
-<h3 id="递归调用"><a href="#递归调用" class="headerlink" title="递归调用"></a>递归调用</h3><p>实质就是自己调用自己，但是递归的所用时间很长。  </p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>一些简单的声明函数的语法就不在这里赘述了。<br><a id="more"></a></p>
+<h3 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h3><p>内联函数不是在调用时发生控制转移，而是在编译时将函数体嵌入在每一个调用处。<br>这样可以节省参数传递、控制传递等开销。<br>语法：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> 类型说明符 函数名 (含类型说明的形参表)&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>内联函数足够的简单，足够简单的定义：</p>
+<ul>
+<li>没有循环和switch case语句</li>
+<li>不能写函数原型，要一次写出</li>
+<li>内联函数内部不能有异常处理(例如：传输过程中断电，使过程不能完成)  </li>
+</ul>
+<h3 id="带默认形参值的函数"><a href="#带默认形参值的函数" class="headerlink" title="带默认形参值的函数"></a>带默认形参值的函数</h3><p>函数在定义时可以预先声明默认的形参值。<br>注意：</p>
+<ul>
+<li>有默认形参值的形参必须在形参列表的最后(即在有默认形参值的右边，不能出现无默认值的形参)<br>因为在函数调用中，实参和形参是按照从左向右的顺序建立对应关系的。  </li>
+<li>在相同的作用域中，不允许在同一个函数的多个声明中对同一个参数的默认值重复定义，即使前后的值相同也不行。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x=<span class="number">5</span>,<span class="keyword">int</span> y=<span class="number">6</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    add();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//int add(int x=5,int y=6)&#123;&#125;这样不对，不能再声明了</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3><p>因为在多态那一节讲过了重载，所以就不在这里赘述了。  </p>
+<h3 id="函数原型声明过程中的操作"><a href="#函数原型声明过程中的操作" class="headerlink" title="函数原型声明过程中的操作"></a>函数原型声明过程中的操作</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> ,<span class="keyword">int</span>)</span></span>;<span class="comment">//可以不用形参名字</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;<span class="comment">/*形参的名字可以是任意的，只要符合标识符的规则*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意的点"><a href="#注意的点" class="headerlink" title="注意的点"></a>注意的点</h3><ul>
+<li>c++程序由函数组成</li>
+<li>内联函数并不一定必须要inline关键字来定义，比如类内的函数默认是内联函数(如果足够简单)</li>
+<li>内联函数是通过编译器来实现的</li>
+<li><p>题目中如果说是函数原型，最后一定要有分号，如果不是函数原型最后一定是无分号的，做题时注意区分。<br>例如：  </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;<span class="comment">//函数原型</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span><span class="comment">/*这个就不是函数原型，在选择中会遇到这种题目*/</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在函数重载的过程中与函数的类型(即返回值类型)</p>
+</li>
+</ul>
 
       
     </div>
@@ -479,7 +503,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归调用"><span class="nav-number">2.</span> <span class="nav-text">递归调用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内联函数"><span class="nav-number">1.1.</span> <span class="nav-text">内联函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带默认形参值的函数"><span class="nav-number">1.2.</span> <span class="nav-text">带默认形参值的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数重载"><span class="nav-number">1.3.</span> <span class="nav-text">函数重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数原型声明过程中的操作"><span class="nav-number">1.4.</span> <span class="nav-text">函数原型声明过程中的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意的点"><span class="nav-number">1.5.</span> <span class="nav-text">注意的点</span></a></li></ol></li></ol></div>
             
 
           </div>
