@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="c++复习," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="类的基本知识 类内的函数默认为内联函数，前提是符合内联函数的条件。如果不符合条件无论是否定义了inline都不会作为内联函数实现，也不会给出报错。   在普通的函数中声明内联函数，如果不符合条件无论是否定义了inline都不会作为内联函数实现，也不会给出报错。  成员函数默认是内联的，所以在声明时写不写都行。所以内联函数前并不都是有inline的抽象抽象:面向对象方法中的抽象，是指对具体问题(对象">
+<meta name="keywords" content="c++复习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++知识9——继承">
+<meta property="og:url" content="http://yoursite.com/2018/06/14/C++知识9——继承/index.html">
+<meta property="og:site_name" content="Jerryjuan">
+<meta property="og:description" content="类的基本知识 类内的函数默认为内联函数，前提是符合内联函数的条件。如果不符合条件无论是否定义了inline都不会作为内联函数实现，也不会给出报错。   在普通的函数中声明内联函数，如果不符合条件无论是否定义了inline都不会作为内联函数实现，也不会给出报错。  成员函数默认是内联的，所以在声明时写不写都行。所以内联函数前并不都是有inline的抽象抽象:面向对象方法中的抽象，是指对具体问题(对象">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-15T00:37:57.944Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++知识9——继承">
+<meta name="twitter:description" content="类的基本知识 类内的函数默认为内联函数，前提是符合内联函数的条件。如果不符合条件无论是否定义了inline都不会作为内联函数实现，也不会给出报错。   在普通的函数中声明内联函数，如果不符合条件无论是否定义了inline都不会作为内联函数实现，也不会给出报错。  成员函数默认是内联的，所以在声明时写不写都行。所以内联函数前并不都是有inline的抽象抽象:面向对象方法中的抽象，是指对具体问题(对象">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/14/C++知识9——继承/"/>
+
+
+
+
+
+  <title>C++知识9——继承 | Jerryjuan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jerryjuan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/14/C++知识9——继承/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerryjuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++知识9——继承</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-14T21:16:54+08:00">
+                2018-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="类的基本知识"><a href="#类的基本知识" class="headerlink" title="类的基本知识"></a>类的基本知识</h3><ul>
+<li>类内的函数默认为内联函数，前提是符合内联函数的条件。如果不符合条件无论是否定义了inline都不会作为内联函数实现，也不会给出报错。  </li>
+<li>在普通的函数中声明内联函数，如果不符合条件无论是否定义了inline都不会作为内联函数实现，也不会给出报错。 </li>
+<li>成员函数默认是内联的，所以在声明时写不写都行。所以内联函数前并不都是有inline的<h4 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h4>抽象:面向对象方法中的抽象，是指对具体问题(对象)进行概括，抽出一类对象的公有性质并加以描述的过程。<br>包括：数据抽象和行为抽象(即功能抽象和代码抽象)  <a id="more"></a>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4>封装：将抽象得到的数据和行为(或功能)相结合，形成一个有机整体，也就是将数据与操作数据的函数代码进行有机的结合，形成”类”，其中的数据和函数都是类的成员。<br>public、private、protected指定了成员的不同访问权限，public为类提供了外部接口。  <h4 id="类成员的访问控制"><a href="#类成员的访问控制" class="headerlink" title="类成员的访问控制"></a>类成员的访问控制</h4>public:<br>定义了类的外部接口。在类外只能访问类的公有成员。<br>private：<br>私有成员只能被本类的成员函数访问，来自类外部的任何访问都是非法的。<br>如果私有成员紧接着类的名称，则关键字private可以省略。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> x,y;<span class="comment">//私有类型</span></span><br><span class="line"><span class="keyword">public</span> :</span><br><span class="line">    getx()&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>protected:<br>protected的性质和private的性质类似，其差别在于继承过程中产生的新类影响不同。(具体的不同在下面的继承方式部分分析)  </p>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><ul>
+<li>类的对象是该类的一个实体(也称实例)</li>
+<li>对象所占据的内存空间只是用于存放数据成员，函数成员不在每一个对象中存储副本，每个函数的代码在内存中值占据一份空间。   </li>
+</ul>
+<h4 id="类的成员函数"><a href="#类的成员函数" class="headerlink" title="类的成员函数"></a>类的成员函数</h4><p>函数原型写在类内，函数在类外实现时，语法为：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">返回值类型 类名::函数成员名(参数表)&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>带默认形参值的函数成员：</strong><br>类的默认形参值要在类内定义，其调用规则和普通函数相同。  </p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><ul>
+<li>在定义对象的时候进行的数据成员设置，称为对象的初始化。  </li>
+<li>在新对象出现时，调用构造函数。  </li>
+<li>构造函数可以重载，不唯一  </li>
+</ul>
+<h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><ul>
+<li>析构函数唯一  </li>
+<li>构造函数的严格逆</li>
+</ul>
+<h3 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h3><ul>
+<li>只能是唯一的  </li>
+<li>执行的时机：<br>当用一个类的对象去初始化另一个对象时。<br>如果函数的形参值是类的对象，调用函数时，进行形参和实参的结合时<br>如果函数的返回值是类的对象，函数执行完成返回调用者时。  </li>
+</ul>
+<h4 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h4><h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><h4 id="内嵌对象"><a href="#内嵌对象" class="headerlink" title="内嵌对象"></a>内嵌对象</h4><p>构造函数的执行顺序：  </p>
+<h3 id="继承方式"><a href="#继承方式" class="headerlink" title="继承方式"></a>继承方式</h3><h3 id="point：用到拷贝构造的时机"><a href="#point：用到拷贝构造的时机" class="headerlink" title="point：用到拷贝构造的时机"></a>point：用到拷贝构造的时机</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c-复习/" rel="tag"># c++复习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/14/C++8多文件结构和编译预处理命令/" rel="next" title="C++知识8——多文件结构和编译预处理命令">
+                <i class="fa fa-chevron-left"></i> C++知识8——多文件结构和编译预处理命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#类的基本知识"><span class="nav-number">1.</span> <span class="nav-text">类的基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象"><span class="nav-number">1.1.</span> <span class="nav-text">抽象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封装"><span class="nav-number">1.2.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类成员的访问控制"><span class="nav-number">1.3.</span> <span class="nav-text">类成员的访问控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象"><span class="nav-number">1.4.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的成员函数"><span class="nav-number">1.5.</span> <span class="nav-text">类的成员函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数"><span class="nav-number">2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#析构函数"><span class="nav-number">3.</span> <span class="nav-text">析构函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝构造函数"><span class="nav-number">4.</span> <span class="nav-text">拷贝构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浅拷贝"><span class="nav-number">4.1.</span> <span class="nav-text">浅拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深拷贝"><span class="nav-number">4.2.</span> <span class="nav-text">深拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内嵌对象"><span class="nav-number">4.3.</span> <span class="nav-text">内嵌对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承方式"><span class="nav-number">5.</span> <span class="nav-text">继承方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#point：用到拷贝构造的时机"><span class="nav-number">6.</span> <span class="nav-text">point：用到拷贝构造的时机</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

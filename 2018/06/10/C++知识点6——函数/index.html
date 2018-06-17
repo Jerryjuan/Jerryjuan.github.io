@@ -83,11 +83,11 @@
 <meta name="keywords" content="c++复习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++知识点6——函数">
-<meta property="og:url" content="http://yoursite.com/2018/06/10/C-知识点6——函数/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/06/10/C++知识点6——函数/index.html">
 <meta property="og:site_name" content="Jerryjuan">
 <meta property="og:description" content="我努力奔跑证明我还活着。     函数一些简单的声明函数的语法就不在这里赘述了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-14T13:00:14.442Z">
+<meta property="og:updated_time" content="2018-06-15T00:59:24.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++知识点6——函数">
 <meta name="twitter:description" content="我努力奔跑证明我还活着。     函数一些简单的声明函数的语法就不在这里赘述了。">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/10/C-知识点6——函数/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/10/C++知识点6——函数/"/>
 
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/C-知识点6——函数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/C++知识点6——函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -336,7 +336,10 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>;<span class="comment">//函数原型</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span><span class="comment">/*这个就不是函数原型，在选择中会遇到这种题目*/</span></span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在函数重载的过程中与函数的类型(即返回值类型)</p>
-</li>
+<h3 id="函数的值传递"><a href="#函数的值传递" class="headerlink" title="函数的值传递"></a>函数的值传递</h3></li>
+<li>形参只能变量</li>
+<li>实参可以为变量也可以为常量</li>
+<li>实参必须与形参匹配：个数、类型。如果不匹配就转化为形参的类型。  </li>
 </ul>
 
       
@@ -378,7 +381,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/10/C-知识点7——不常用语法精解/" rel="prev" title="C++知识点7——不常用语法精解">
+              <a href="/2018/06/10/C++知识点7——不常用语法精解/" rel="prev" title="C++知识点7——不常用语法精解">
                 C++知识点7——不常用语法精解 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -457,7 +460,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -503,7 +506,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内联函数"><span class="nav-number">1.1.</span> <span class="nav-text">内联函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带默认形参值的函数"><span class="nav-number">1.2.</span> <span class="nav-text">带默认形参值的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数重载"><span class="nav-number">1.3.</span> <span class="nav-text">函数重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数原型声明过程中的操作"><span class="nav-number">1.4.</span> <span class="nav-text">函数原型声明过程中的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意的点"><span class="nav-number">1.5.</span> <span class="nav-text">注意的点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内联函数"><span class="nav-number">1.1.</span> <span class="nav-text">内联函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带默认形参值的函数"><span class="nav-number">1.2.</span> <span class="nav-text">带默认形参值的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数重载"><span class="nav-number">1.3.</span> <span class="nav-text">函数重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数原型声明过程中的操作"><span class="nav-number">1.4.</span> <span class="nav-text">函数原型声明过程中的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意的点"><span class="nav-number">1.5.</span> <span class="nav-text">注意的点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的值传递"><span class="nav-number">1.6.</span> <span class="nav-text">函数的值传递</span></a></li></ol></li></ol></div>
             
 
           </div>
